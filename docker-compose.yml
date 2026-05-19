@@ -11,5 +11,17 @@ services:
       - WEBSOCKET_ENABLED=true
     volumes:
       - ./vw-data:/data
+
+  caddy:
+    image: caddy:2-alpine
+    container_name: caddy
+    restart: always
     ports:
-      - "${PORT:-8080}:80"
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - ./caddy-data:/data
+      - ./caddy-config:/config
+    depends_on:
+      - vaultwarden

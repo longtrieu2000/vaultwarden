@@ -1,0 +1,12 @@
+# Thay thế bằng tên miền phụ của bạn đã được trỏ về Elastic IP của AWS EC2
+# Ví dụ: vault.yourdomain.com
+# Caddy sẽ tự động đăng ký và quản lý chứng chỉ SSL HTTPS miễn phí cho bạn.
+
+:80 {
+    # Cấu hình dự phòng nếu chưa có tên miền (truy cập tạm thời qua HTTP port 80)
+    reverse_proxy vaultwarden:80
+}
+
+# vault.yourdomain.com {
+#     reverse_proxy vaultwarden:80
+# }
